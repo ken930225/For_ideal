@@ -1,24 +1,29 @@
-# README
+# <アプリ名>
+For ideal
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+近年健康的な身体作りを目的とした、フィットネスのブームにより「ジムでのトレーニング」や
+外出自粛中の自宅でのトレーニング、所謂「宅トレ」を嗜む人達が増加している。
+しかし、モチベーションが保てず目標の身体を得る前に挫折してしまったり、
+正しい知識を身に付けることができずにトレーニングをすることで怪我に繋がってしまう例が非常に多い。
+そこで、本サイトでは目標の身体を目指す人達や筋トレが好きな人達のモチベーションの向上と知識の共有をする場所にしたい。
+上記を基にして、
+日々の筋トレの結果を投稿できる機能や、その投稿に対するコメントやユーザーへのフォロー機能などを実装する。
 
-Things you may want to cover:
+### サイトテーマ
+目標の身体を目指す人達や、筋トレが好きな人達のモチベーションの向上と知識共有のためのサイト
 
-* Ruby version
+### テーマを選んだ理由
+本サイトでは目標の身体を目指す人達や筋トレが好きな人達のモチベーションの向上と知識の共有をする場所にしたい。
 
-* System dependencies
+### ターゲットユーザ
+目標の身体を目指す人や筋トレが好きな人
+(男女世代を問わない)
 
-* Configuration
+### 主な利用シーン
+日々の実施したトレーニングの結果を投稿する
 
-* Database creation
+## 設計書
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 機能一覧
+https://docs.google.com/spreadsheets/d/1qvqnyEtuHM5aArvSWaFySTeCKdg7uFsDEbJ7kffkdWI/edit#gid=0
