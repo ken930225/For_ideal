@@ -65,3 +65,8 @@ gem 'jquery-rails'
 
 gem 'devise'
 gem 'font-awesome-rails'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
