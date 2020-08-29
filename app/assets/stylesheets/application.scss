@@ -15,3 +15,25 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
+body {
+  background-image: image-url("hoge.jpg");
+ }
+
+.nav navbar-nav navbar-right {
+  color:white;
+  padding-bottom: 0;
+}
+.footer-text {
+  font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
+  margin-bottom: 0;
+  margin-right: 10px;
+}
+.social i {
+  display: inline-block;
+  margin-right: 10px;
+　color:　white;
+}
+.field row {
+  line-height: 2;
+}

@@ -7,7 +7,7 @@
 				<thead>
 					<tr>
 						<th></th>
-						<th>日時</th>
+						<th>日付</th>
 						<th>トレーニング場所</th>
 						<th>種目</th>
 						<th>ターゲット</th>
@@ -18,19 +18,19 @@
 				</thead>
 
 				<tbody>
-					<%# @workouts.each do |workout| %>
+					<% @workouts.each do |workout| %>
 					<tr>
 						<td>
 							<%#= link_to user_path(workout.user) do %>
 							<%#= attachment_image_tag(workout.user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
 							<%# end %>
 						</td>
-						<td><%#= link_to workout.datetime, workout_path(workout) %></td>
-						<td><%#= workout.place %></td>
-						<td><%#= workout.menu %></td>
-						<td><%#= workout.target %></td>
-						<td><%#= workout.weight %></td>
-						<td><%#= workout.count %></td>
+						<td><%= link_to workout.date, workout_path(workout) %></td>
+						<td><%= workout.place %></td>
+						<td><%= workout.menu %></td>
+						<td><%= workout.target %></td>
+						<td><%= workout.weight %>kg</td>
+						<td><%= workout.count %>回</td>
 						<!-- いいね機能 -->
 	          <td>
 	            <%# if workout.favorited_by?(current_user) %>
@@ -46,7 +46,7 @@
 						<!-- いいね機能 -->
 
 					</tr>
-					<%# end %>
+					<% end %>
 				</tbody>
 			</table>
 			<!--books一覧 -->
