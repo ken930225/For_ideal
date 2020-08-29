@@ -16,6 +16,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+body {
+  background-image: image-url("hoge.jpg");
+ }
 
 .nav navbar-nav navbar-right {
   color:white;
