@@ -1,16 +1,5 @@
-<<<<<<< HEAD
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-=======
-<!DOCTYPE html>
-<html>
-  <head>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  </head>
 <div class="container">
-	<div class="row">
+	<div class="row box">
 		<div class="col-xs-5">
 			<h2>Today's workout投稿</h2>
 			<%= form_for(@workout) do |f| %>
@@ -37,15 +26,20 @@
 				<div class="field row">
 					<%= f.label :回数 %>
 					<%= f.text_field :count, placeholder: "例)20, 30", class: "col-xs-12 workout_count" %>
-				</div>
+				</div><br>
 				<div class="actions row">
 					<%= f.submit :投稿, class: "btn btn-primary col-xs-3 pull-right" %>
 				</div>
 			<% end %>
 		</div>
-		<div class="col-xs-3 pull-right">
+		<div class="col-xs-4 pull-right">
 			<h2>Profile</h2>
 			<table class="table table-hover table-inverse">
+				<tr>
+					<td></td>
+					<td><%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %>
+					</td>
+				</tr>
 				<tr>
 					<td>氏名</td>
 					<td><%= current_user.name %></td>
@@ -67,15 +61,13 @@
 				<%= link_to '編集', edit_user_path(@user), class: "col-xs-3 btn btn-warning pull-right glyphicon glyphicon-wrench edit_user_#{@user.id}" %>
 			</div>
 		</div>
-	</div>
+
 	<section class="your all workouts">
-		<div class="row">
+
 			<div class="col-xs-9">
 				<h2>あなたの全てのworkout</h2>
 				<table class="table table-hover table-inverse">
 					<thead>
-						<tr>
-							<th></th>
 							<th>日付</th>
 							<th>場所</th>
 							<th>ターゲット</th>
@@ -87,11 +79,6 @@
 					<tbody>
 						<% @workouts.each do |workout| %>
 						<tr>
-							<td>
-								<%#= link_to user_path(workout.user) do %>
-								<%#= attachment_image_tag(workout.user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
-								<%# end %>
-							</td>
 							<td><%= workout.date %></td>
 							<td><%= workout.place %></td>
 							<td><%= workout.target %></td>
@@ -107,4 +94,3 @@
 		</div>
 	</section>
 </div>
->>>>>>> 19cc48fb1bcad4429eb1697eab218d40dcef60d7

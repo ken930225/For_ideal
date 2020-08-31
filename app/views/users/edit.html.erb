@@ -1,34 +1,35 @@
-<h2>Profile編集</h2>
+<div class="row box">
+	<h2>Profile編集</h2>
+	<%= form_for(@user) do |f| %>
 
-<%= form_for(@user) do |f| %>
+		<%#= render 'layouts/error_messages', resource: @user %>
 
-	<%#= render 'layouts/error_messages', resource: @user %>
+		<div class="field">
+			<%= f.label :プロフィール画像 %>
+			<%= f.attachment_field :profile_image, class: "user_image" %>
+		</div>
+		<div class="field">
+			<%= f.label :氏名 %>
+			<%= f.text_field :name, class: "name" %>
+		</div>
 
-	<div class="field">
-		<%#= f.label :プロフィール画像 %>
-		<%#= f.attachment_field :profile_image, class: "user_image" %>
-	</div>
-	<div class="field">
-		<%= f.label :氏名 %>
-		<%= f.text_field :name, class: "name" %>
-	</div>
+		<div class="field">
+			<%= f.label :メールアドレス %>
+			<%= f.text_field :email, class: "email" %>
+		</div>
 
-	<div class="field">
-		<%= f.label :メールアドレス %>
-		<%= f.text_field :email, class: "email" %>
-	</div>
+		<div class="field">
+			<%= f.label :自己紹介 %>
+			<%= f.text_area :introduction, class: "introduction" %>
+		</div>
+		<div class="field">
+			<%= f.label :目標 %>
+			<%= f.text_area :objective, class: "objective" %>
+		</div>
 
-	<div class="field">
-		<%= f.label :自己紹介 %>
-		<%= f.text_area :introduction, class: "introduction" %>
-	</div>
-	<div class="field">
-		<%= f.label :目標 %>
-		<%= f.text_area :objective, class: "objective" %>
-	</div>
+		<div class="actions">
+			<%= f.submit %>
+		</div>
 
-	<div class="actions">
-		<%= f.submit %>
-	</div>
-
-<% end %>
+	<% end %>
+</div>

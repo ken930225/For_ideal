@@ -11,17 +11,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-<<<<<<< HEAD
-  end
 
-  def update
-=======
    @user = User.find(params[:id])
   end
 
   def update
    @user = User.find(params[:id])
->>>>>>> 19cc48fb1bcad4429eb1697eab218d40dcef60d7
     if @user.update(user_params)
       redirect_to user_path(@user), notice: "successfully updated user!"
     else
@@ -29,12 +24,6 @@ class UsersController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-  private
-
-  def user_params
-    params.require(:user).permit(:name, :introduction, :profile_image)
-=======
   def destroy
     @workout = Workout.find(params[:id])
     @workout.destroy
@@ -45,7 +34,6 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :objective, :introduction, :profile_image)
->>>>>>> 19cc48fb1bcad4429eb1697eab218d40dcef60d7
   end
 
   def ensure_correct_user

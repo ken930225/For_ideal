@@ -1,5 +1,5 @@
 <div class="container">
-	<div class="row">
+	<div class="row box">
 			<h2>Workout detail</h2>
 			<table class="table">
 				<thead>
@@ -18,8 +18,8 @@
 					<tr>
 						<td>
 							<%= link_to user_path(@workout.user_id) do %>
-								<%#= attachment_image_tag(@workout.user, :profile_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %><br>
-								<%#= @workout.user.name %>
+								<%= attachment_image_tag(@workout.user, :profile_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %><br>
+								<%= @workout.user.name %>
 							<% end %>
 						</td>
 						<td><%= link_to @workout.id, workout_path(@workout) %></td>
