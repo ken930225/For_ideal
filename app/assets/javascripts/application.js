@@ -15,3 +15,12 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+//= require moment
+//= require fullcalendar
+//= require activestorage
+
+$(() => {
+  $(document).on('turbolinks:load', () => {
+    $('#calendar').fullCalendar({})
+  })
+})

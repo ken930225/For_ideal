@@ -3,6 +3,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @workouts = @user.workouts
     @workout = Workout.new
+    @events = Event.where(user_id: @user.id)
+    @event = Event.new
   end
 
   def index
@@ -11,7 +13,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-
    @user = User.find(params[:id])
   end
 

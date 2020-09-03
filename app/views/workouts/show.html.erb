@@ -1,5 +1,5 @@
 <div class="container">
-	<div class="row box">
+	<div class="row box workout-detail">
 			<h2>Workout detail</h2>
 			<table class="table">
 				<thead>
@@ -18,11 +18,11 @@
 					<tr>
 						<td>
 							<%= link_to user_path(@workout.user_id) do %>
-								<%= attachment_image_tag(@workout.user, :profile_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %><br>
+								<%= attachment_image_tag(@workout.user, :profile_image, :fill, 100, 100, class: "img-circle pull-left profile-img", fallback: "no-image-mini.jpg") %><br><br><br><br><br>
 								<%= @workout.user.name %>
 							<% end %>
 						</td>
-						<td><%= link_to @workout.id, workout_path(@workout) %></td>
+						<td><%= @workout.id %></td>
 						<td><%= @workout.place %></td>
 						<td><%= @workout.menu %></td>
 						<td><%= @workout.target %></td>
@@ -35,12 +35,11 @@
 			                	<span class="glyphicon glyphicon-heart"><%= @workout.favorites.count%></span>
 			              	<% end %>
 			            	<% else %>
-			              	<%# link_to workout_favorites_path(@workout), method: :post do %>
+			              	<% link_to workout_favorites_path(@workout), method: :post do %>
 			                	<span class="glyphicon glyphicon-heart-empty"><%= @workout.favorites.count %></span>
-			              	<%# end %>
+			              	<% end %>
 			            <% end %>
 			        	</td>
-						<!-- いいね機能 -->
 						<td>コメント数：<%= @workout.workout_comments.count %></td>
 						<% if @workout.user == current_user %>
 							<td><%= link_to "Edit", edit_workout_path(@workout), class: "btn-sm btn-success edit_workout_#{@workout.id}" %></td>
@@ -49,7 +48,7 @@
 					</tr>
 				</tbody>
 			</table>
-				<!-- コメント一覧 -->
+				<!-- コメント投稿 -->
 			<table>
 				<% @workout_comments.each do |workout_comment| %>
 					<tr>
@@ -68,7 +67,7 @@
 			</table>
 
 		    <div class="comment-form">
-			    <%= form_for [@workout_comment] do |f| %>
+			    <%= form_for [@workout, @workout_comment] do |f| %>
 				    <%= f.text_area :comment, size: "90x5" %>
 				    <%= f.submit '送信', class: "btn-sm btn-primary" %>
 			    <% end %>

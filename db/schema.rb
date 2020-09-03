@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_31_121435) do
+ActiveRecord::Schema.define(version: 2020_09_03_073259) do
+
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.boolean "disp_flg"
+    t.datetime "start"
+    t.datetime "end"
+    t.string "allDay"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+  end
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -53,7 +65,7 @@ ActiveRecord::Schema.define(version: 2020_08_31_121435) do
     t.string "target"
     t.string "menu"
     t.integer "count"
-    t.integer "weight"
+    t.string "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "date"

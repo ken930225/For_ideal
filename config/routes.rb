@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
+
+  resources :events, only: [:create, :index, :edit, :update, :destroy]
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'homes#top'
   get 'homes/about'
-  resources :workouts
+  get 'homes/index'
   resources :users, only: [:show, :index, :edit, :update, :destroy]
-  resource :favorites, only: [:create, :destroy]
-  resources :workout_comments, only: [:create, :destroy]
-
+  resources :workouts do
+    resource :favorites, only: [:create, :destroy]
+    resources :workout_comments, only: [:create, :destroy]
+  end
 end
 =begin                   Prefix Verb   URI Pattern                                                                              Controller#Action
          new_user_session GET    /users/sign_in(.:format)                                                                 devise/sessions#new

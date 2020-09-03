@@ -1,43 +1,47 @@
 <div class="container">
 	<div class="row box">
-		<div class="col-xs-5">
-			<h2>Today's workout投稿</h2>
-			<%= form_for(@workout) do |f| %>
-				<div class="field row">
-					<%= f.label :日付 %>
-					<%= f.text_field :date, placeholder: "2020/08/23", class: "col-xs-12 workout_created_at" %>
+		<div class="col-xs-7 workout-up">
+			<h2 class="workout-up-title">Today's workout投稿</h2>
+				<div class="workout-up-form">
+					<table class="table">
+						<%= form_for(@workout) do |f| %>
+							<tr>
+								<th><%= f.label :日付 %></th>
+								<td><%= f.text_field :date, placeholder: "2020/08/23", class: "col-xs-12 workout_created_at" %></td>
+							</tr>
+							<tr>
+								<th><%= f.label :トレーニング場所 %></th>
+								<td><%= f.text_field :place, placeholder: "例)ジム, 自宅", class: "col-xs-12 workout_place" %></td>
+							</tr>
+							<tr>
+								<th><%= f.label :種目 %></th>
+								<td><%= f.text_field :menu, placeholder: "例)ベンチプレス, 上体起こし", class: "col-xs-12 workout_menu" %></td>
+							</tr>
+							<tr>
+								<th><%= f.label :ターゲット %></th>
+								<td><%= f.text_field :target, placeholder: "例)大胸筋, 腹筋", class: "col-xs-12 workout_target" %></td>
+							</tr>
+							<tr>
+								<th><%= f.label :重量 %></th>
+								<td><%= f.text_field :weight, placeholder: "例)80, 自重", class: "col-xs-12 workout_count" %></td>
+							</tr>
+							<tr>
+								<th><%= f.label :回数 %></th>
+								<td><%= f.text_field :count, placeholder: "例)20, 30", class: "col-xs-12 workout_count" %></td>
+							</tr><br>
+						</table>
+							<div>
+								<%= f.submit :投稿, class: "btn btn-primary col-xs-2 pull-right" %>
+							</div>
+						<% end %>
 				</div>
-				<div class="field row">
-					<%= f.label :トレーニング場所 %>
-					<%= f.text_field :place, placeholder: "例)ジム, 自宅", class: "col-xs-12 workout_place" %>
-				</div>
-				<div class="field row">
-					<%= f.label :種目 %>
-					<%= f.text_field :menu, placeholder: "例)ベンチプレス, 上体起こし", class: "col-xs-12 workout_menu" %>
-				</div>
-				<div class="field row">
-					<%= f.label :ターゲット %>
-					<%= f.text_field :target, placeholder: "例)大胸筋, 腹筋", class: "col-xs-12 workout_target" %>
-				</div>
-				<div class="field row">
-					<%= f.label :重量 %>
-					<%= f.text_field :weight, placeholder: "例)80, 自重", class: "col-xs-12 workout_count" %>
-				</div>
-				<div class="field row">
-					<%= f.label :回数 %>
-					<%= f.text_field :count, placeholder: "例)20, 30", class: "col-xs-12 workout_count" %>
-				</div><br>
-				<div class="actions row">
-					<%= f.submit :投稿, class: "btn btn-primary col-xs-3 pull-right" %>
-				</div>
-			<% end %>
 		</div>
 		<div class="col-xs-4 pull-right">
 			<h2>Profile</h2>
 			<table class="table table-hover table-inverse">
 				<tr>
 					<td></td>
-					<td><%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %>
+					<td><%= attachment_image_tag(@user, :profile_image, :fill, 80, 80, class: "img-circle pull-left profile-img", fallback: "no_image.jpg") %>
 					</td>
 				</tr>
 				<tr>
@@ -58,14 +62,14 @@
 				</tr>
 			</table>
 			<div>
-				<%= link_to '編集', edit_user_path(@user), class: "col-xs-3 btn btn-warning pull-right glyphicon glyphicon-wrench edit_user_#{@user.id}" %>
+				<%= link_to '編集', edit_user_path(@user), class: "col-xs-3 btn btn-warning pull-right edit_user_#{@user.id}" %>
 			</div>
 		</div>
 
 	<section class="your all workouts">
 
 			<div class="col-xs-9">
-				<h2>あなたの全てのworkout</h2>
+				<h2 class="your-workouts">あなたの全てのworkout</h2>
 				<table class="table table-hover table-inverse">
 					<thead>
 							<th>日付</th>

@@ -25,6 +25,7 @@
             <!--if文でサインインとアウト時の表示を変更-->
             <% if user_signed_in? %>
             <li><%= link_to ' Home', user_path(current_user), class: 'fas fa-home', style: "color:white" %></li>
+            <li><%= link_to ' Schedule', events_path(current_user), class: 'fas fa-calendar-alt', style: "color:white" %></li>
             <li><%= link_to ' Users', users_path, class: 'fas fa-users', style: "color:white" %></li>
             <li><%= link_to ' Workouts', workouts_path, class: 'fas fa-dumbbell', style: "color:white" %></li>
             <li><%= link_to ' Log out', destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt', style: "color:white" %></li>
@@ -61,8 +62,5 @@
       </div>
     </footer>
   </body>
-
-
-
 </html>
 

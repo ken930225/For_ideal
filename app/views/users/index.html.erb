@@ -5,10 +5,10 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>プロフィール</th>
-					<th>名前</th>
-					<th>自己紹介</th>
-					<th>目標</th>
+					<th class="thead_center">プロフィール</th>
+					<th class="thead_center">名前</th>
+					<th class="thead_center">自己紹介</th>
+					<th class="thead_center">目標</th>
 					<th colspan="3"></th>
 				</tr>
 			</thead>
@@ -16,10 +16,10 @@
 			<tbody>
 				<% @users.each do |user| %>
 				<tr>
-					<td><%#= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %></td>
-					<td><%= link_to user.name, user_path(user), class: "user_#{user.id}" %></td>
-					<td><%= user.introduction %></td>
-					<td><%= user.objective %></td>
+					<td class="profile_image"><%= attachment_image_tag(user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-img", fallback: "no-image-mini.jpg") %></td>
+					<td class="thead_center"><%= link_to user.name, user_path(user), class: "user_#{user.id}" %></td>
+					<td class="thead_center"><%= user.introduction %></td>
+					<td class="thead_center"><%= user.objective %></td>
 				</tr>
 				<% end %>
 			</tbody>
