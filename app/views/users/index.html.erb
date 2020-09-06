@@ -5,7 +5,7 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th class="thead_center">プロフィール</th>
+					<th><span class="profile-head">プロフィール</span></th>
 					<th class="thead_center">名前</th>
 					<th class="thead_center">自己紹介</th>
 					<th class="thead_center">目標</th>
@@ -16,7 +16,7 @@
 			<tbody>
 				<% @users.each do |user| %>
 				<tr>
-					<td class="profile_image"><%= attachment_image_tag(user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-img", fallback: "no-image-mini.jpg") %></td>
+					<td><%= attachment_image_tag(user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-img user-index-img", fallback: "no-image-mini.jpg") %></td>
 					<td class="thead_center"><%= link_to user.name, user_path(user), class: "user_#{user.id}" %></td>
 					<td class="thead_center"><%= user.introduction %></td>
 					<td class="thead_center"><%= user.objective %></td>

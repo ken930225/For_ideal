@@ -15,7 +15,7 @@ class WorkoutsController < ApplicationController
     @workout = Workout.new(workout_params)
     @workout.user_id = current_user.id
     if @workout.save
-      redirect_to workout_path(@workout), notice: "You have created book successfully."
+      redirect_to workout_path(@workout), notice: "You have created workout successfully."
     else
       @workouts = Workout.all
       render 'index'
@@ -23,11 +23,13 @@ class WorkoutsController < ApplicationController
   end
 
   def edit
+    @workout = Workout.find(params[:id])
   end
 
   def update
+    @workout = Workout.find(params[:id])
     if @workout.update(workout_params)
-      redirect_to workout_path(@workout), notice: "You have updated book successfully."
+      redirect_to workout_path(@workout), notice: "You have updated workout successfully."
     else
       render "edit"
     end

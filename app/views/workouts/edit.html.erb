@@ -1,2 +1,41 @@
-<h1>Workouts#edit</h1>
-<p>Find me in app/views/workouts/edit.html.erb</p>
+<div class="row box workout-edit">
+	<div class="col-md-6 col-md-offset-3">
+
+		<h2>Workout 編集</h2>
+		<table class="table">
+			<%= form_for(@workout) do |f| %>
+				<tr>
+					<th><%= f.label :日付 %></th>
+					<td><%= f.text_field :date, placeholder: "2020/08/23", class: "col-xs-12 workout_created_at" %></td>
+				</tr>
+				<tr>
+					<th><%= f.label :トレーニング場所 %></th>
+					<td><%= f.text_field :place, placeholder: "例)ジム, 自宅", class: "col-xs-12 workout_place" %></td>
+				</tr>
+				<tr>
+					<th><%= f.label :種目 %></th>
+					<td><%= f.text_field :menu, placeholder: "例)ベンチプレス, 上体起こし", class: "col-xs-12 workout_menu" %></td>
+				</tr>
+				<tr>
+					<th><%= f.label :ターゲット %></th>
+					<td><%= f.text_field :target, placeholder: "例)大胸筋, 腹筋", class: "col-xs-12 workout_target" %></td>
+				</tr>
+				<tr>
+					<th><%= f.label :重量 %></th>
+					<td><%= f.text_field :weight, placeholder: "例)80, 自重", class: "col-xs-5 workout_count" %>kg</td>
+				</tr>
+				<tr>
+					<th><%= f.label :回数 %></th>
+					<td><%= f.text_field :count, placeholder: "例)20, 30", class: "col-xs-5 workout_count" %>回</td>
+				</tr>
+				<tr>
+					<th><%= f.label :セット数 %></th>
+					<td><%= f.text_field :set, placeholder: "例)20, 30", class: "col-xs-5 workout_count" %>set</td>
+				</tr>
+			</table>
+				<div>
+					<%= f.submit :確定, class: "btn btn-primary col-xs-2 pull-right" %>
+				</div>
+			<% end %>
+	</div>
+</div>

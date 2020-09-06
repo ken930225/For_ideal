@@ -5,62 +5,68 @@
 				<thead>
 					<tr>
 						<th></th>
-						<th>workout No.</th>
-						<th>トレーニング場所</th>
-						<th>種目</th>
-						<th>ターゲット</th>
-						<th>重量</th>
-						<th>回数</th>
-						<th>イイね</th>
+						<th class="thead_center">workout No.</th>
+						<th class="thead_center">トレーニング場所</th>
+						<th class="thead_center">種目</th>
+						<th class="thead_center">ターゲット</th>
+						<th class="thead_center">重量</th>
+						<th class="thead_center">回数</th>
+						<th class="thead_center">セット数</th>
+						<th class="thead_center"></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td>
 							<%= link_to user_path(@workout.user_id) do %>
-								<%= attachment_image_tag(@workout.user, :profile_image, :fill, 100, 100, class: "img-circle pull-left profile-img", fallback: "no-image-mini.jpg") %><br><br><br><br><br>
+								<%= attachment_image_tag(@workout.user, :profile_image, :fill, 100, 100, class: "img-circle pull-left workout-detail-profile-img", fallback: "no-image-mini.jpg") %><br><br><br><br><br>
+								<span class="name-left">
 								<%= @workout.user.name %>
+								</span>
 							<% end %>
 						</td>
-						<td><%= @workout.id %></td>
-						<td><%= @workout.place %></td>
-						<td><%= @workout.menu %></td>
-						<td><%= @workout.target %></td>
-						<td><%= @workout.weight %></td>
-						<td><%= @workout.count %></td>
+						<td class="thead_center"><%= @workout.id %></td>
+						<td class="thead_center"><%= @workout.place %></td>
+						<td class="thead_center"><%= @workout.menu %></td>
+						<td class="thead_center"><%= @workout.target %></td>
+						<td class="thead_center"><%= @workout.weight %>kg</td>
+						<td class="thead_center"><%= @workout.count %>回</td>
+						<td class="thead_center"><%= @workout.set %>set</td>
 						<!-- お気に入り機能 -->
-			        	<td>
-			            <% if @workout.favorited_by?(current_user) %>
-			              	<%= link_to workout_favorites_path(@workout), method: :delete do %>
-			                	<span class="glyphicon glyphicon-heart"><%= @workout.favorites.count%></span>
-			              	<% end %>
-			            	<% else %>
-			              	<% link_to workout_favorites_path(@workout), method: :post do %>
-			                	<span class="glyphicon glyphicon-heart-empty"><%= @workout.favorites.count %></span>
-			              	<% end %>
-			            <% end %>
+			        	<td class="thead_center">
+				            <% if @workout.favorited_by?(current_user) %>
+				              	<%= link_to workout_favorites_path(@workout), method: :delete do %>
+				                	<span class="glyphicon glyphicon-heart"><%= @workout.favorites.count %></span>
+				                <% end %>
+				            <% else %>
+				              	<%= link_to workout_favorites_path(@workout), method: :post do %>
+				                	<span class="glyphicon glyphicon-heart-empty"><%= @workout.favorites.count %></span>
+				              	<% end %>
+				            <% end %>
 			        	</td>
-						<td>コメント数：<%= @workout.workout_comments.count %></td>
+						<td class="thead_center">コメント数：<%= @workout.workout_comments.count %></td>
 						<% if @workout.user == current_user %>
-							<td><%= link_to "Edit", edit_workout_path(@workout), class: "btn-sm btn-success edit_workout_#{@workout.id}" %></td>
-							<td><%= link_to "Destroy", workout_path(@workout), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_workout_#{@workout.id}" %></td>
+							<td><%= link_to "編集", edit_workout_path(@workout), class: "btn-sm btn-success edit_workout_#{@workout.id}" %></td>
+							<td><%= link_to "削除", workout_path(@workout), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_workout_#{@workout.id}" %></td>
 						<% end %>
 					</tr>
 				</tbody>
 			</table>
 				<!-- コメント投稿 -->
-			<table>
+			<table class="table-comment">
 				<% @workout_comments.each do |workout_comment| %>
 					<tr>
-						<td class="show-comment">
+						<td>
 							<%= link_to user_path(workout_comment.user), class: "user_#{workout_comment.user.id}" do %>
-								<%= attachment_image_tag workout_comment.user, :profile_image, fallback: "no_image.jpg", size: "50x50" %><br>
+								<%= attachment_image_tag workout_comment.user, :profile_image, :fill, 50, 50, class: "img-circle comment-profile-img", fallback: "no_image.jpg" %><br>
+								<span class="workout-detail-name-left">
 								<%= workout_comment.user.name %>
+								</span>
 							<% end %>
 						</td>
-						<td class="show-comment"><%= workout_comment.comment %></td>
+						<td><span class="show-comment"><%= workout_comment.comment %></span></td>
 						<% if current_user == workout_comment.user %>
-							<td><%= link_to 'Destroy', workout_workout_comment_path(@workout, workout_comment), class: 'btn-sm btn-danger', method: :delete %></td>
+							<td><%= link_to '削除', workout_workout_comment_path(@workout, workout_comment), class: 'btn-sm btn-danger', method: :delete %></td>
 						<% end %>
 					</tr>
 				<% end %>
