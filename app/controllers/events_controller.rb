@@ -15,6 +15,7 @@ class EventsController < ApplicationController
     event = Event.find(params[:id])
     @events = Event.where(user_id: current_user.id)
     event.update(event_params)
+    redirect_to events_path(current_user)
   end
 
   def destroy

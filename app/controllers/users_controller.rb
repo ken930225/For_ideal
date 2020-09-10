@@ -41,8 +41,8 @@ class UsersController < ApplicationController
   end
 
   def ensure_correct_user
-    @workout = Workout.find(params[:id])
-    unless @workout == current_user
+    @user = User.find(params[:id])
+    unless @user == current_user
       redirect_to user_path(current_user)
     end
   end

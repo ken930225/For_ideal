@@ -45,7 +45,7 @@
                         </div>
                         <div class="modal-body">
                             <div  class="col">
-                                <%= form_with(model: event, url: users_path(event), method: :put) do |f| %>
+                                <%= form_with(model: event, url: event_path(event), method: :put, remote: :false) do |f| %>
                                     <p>
                                         <span>タイトル</span>
                                         <span id="inputTitle" value=""><%= f.text_field :title, class: "form-control", placeholder: "タイトルを入力してください" %></span>
@@ -101,7 +101,6 @@
             },
 
             timezone: 'UTC',
-            events: '/events.json',
             navLinks: true,
             selectable: true,
             selectHelper: true,
@@ -112,13 +111,26 @@
 
             // event クリックで編集、削除
             eventClick : function(event, jsEvent , view) {
+            console.log(event);
                 jsEvent.preventDefault();
                 $(`#inputScheduleEditForm${event.id}`).modal('show');
             },
 
             eventMouseover : function(event, jsEvent , view) {
-                jsEvent.preventDefault();
-            }
+            jsEvent.preventDefault();
+            },
+            events: [
+                 <% @events.each do |event| %>
+                 <% if event.start && event.end %>
+                 {
+                  id : '<%= event.id %>',
+                  title : '<%= event.title %>',
+                  start : '<%= event.start.strftime('%Y-%m-%d') %>',
+                  end : '<%= event.end.strftime('%Y-%m-%d') %>'
+                 },
+                 <% end %>
+                 <% end %>
+                ]
         })
 
     </script>
