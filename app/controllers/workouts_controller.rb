@@ -1,6 +1,9 @@
 class WorkoutsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+
   def index
-    @workouts = Workout.all
+    @workouts = Workout.page(params[:page]).reverse_order
     @workout = Workout.new
   end
 
@@ -42,6 +45,12 @@ class WorkoutsController < ApplicationController
   end
 
   def workout_params
-    params.require(:workout).permit(:place, :menu, :target, :count)
+    params.require(:workout).permit(:place, :menu, :target, :count, :date, :weight, :set)
+  end
+  def ensure_correct_user
+    @workout = Workout.find(params[:id])
+    unless @workout.user == current_user
+      redirect_to workouts_path
+    end
   end
 end

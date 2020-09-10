@@ -76,3 +76,5 @@ gem "refile-mini_magick"
 
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+
+gem 'kaminari','~> 1.2.1'

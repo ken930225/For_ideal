@@ -1,6 +1,12 @@
 <div class="container">
 	<div class="row box workout_index">
-			<h2>Workout一覧(全ユーザー)</h2>
+			<% if @workout.errors.any? %>
+				<div id="error_explanation">
+					<h3 class="error-explanation"><%= @workout.errors.count %>箇所空欄があるため保存できませんでした</h3>
+				</div>
+			<% end %>
+
+			<h2 class="title-deco workouts-index-title">Workout一覧 (全メンバー)</h2>
 			<!--workout一覧 -->
 			<table class="table table-hover table-inverse">
 				<thead>

@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+
   def show
     @user = User.find(params[:id])
-    @workouts = @user.workouts
+    @workouts = @user.workouts.page(params[:page]).reverse_order
     @workout = Workout.new
     @events = Event.where(user_id: @user.id)
     @event = Event.new
@@ -28,7 +31,7 @@ class UsersController < ApplicationController
   def destroy
     @workout = Workout.find(params[:id])
     @workout.destroy
-    redirect_to user_path(User.find(params[:id]))
+    redirect_to user_path(current_user.id)
   end
 
   private
@@ -38,8 +41,8 @@ class UsersController < ApplicationController
   end
 
   def ensure_correct_user
-    @user = User.find(params[:id])
-    unless @user == current_user
+    @workout = Workout.find(params[:id])
+    unless @workout == current_user
       redirect_to user_path(current_user)
     end
   end
