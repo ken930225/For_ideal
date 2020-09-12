@@ -28,10 +28,16 @@
 }
 
 body {
-  background-image: image-url("/assets/1389375_s.jpg");
+  background-image: image-url("1389375_s.jpg");
   background-repeat: no-repeat;
   background-size: cover;
  }
+
+.logo {
+  image_tag: image-url("722622.png");
+  width: 150px;
+  height: 75px;
+}
 
 .navbar-right {
   color: white;
